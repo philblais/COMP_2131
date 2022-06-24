@@ -1,0 +1,55 @@
+/* Variables */
+:root{
+    --main-background-color: snow;
+    --accent-color: rgba(0, 0, 0, 90%);
+    --hover-color: rgba(0, 0, 0, 90%);
+}
+
+/* fade in */
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+/* place a popup overlay overtop top of page content */
+#pop-up{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index: -1;
+    background-color: var(--hover-color);
+    font-size:.85em;
+}
+
+#pop-up div{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    max-width:400px;
+    min-width:300px;
+    padding:40px;
+    border-radius:10px;
+    background-color: var(--main-background-color);
+}
+
+#close-pop-up{
+    background-color: white;
+    font-weight: bold;
+    cursor:pointer;
+    position:absolute;
+    top:-14px;
+    right:0;
+}
+#close-pop-up:hover,
+#close-pop-up:focus,
+#close-pop-up:active{
+    background-color: var(--accent-color);
+    color:white;
+}
