@@ -32,7 +32,7 @@
     left:50%;
     top:50%;
     transform:translate(-50%, -50%);
-    max-width:400px;
+    max-width:100%;
     min-width:300px;
     padding:40px;
     border-radius:10px;
@@ -52,4 +52,28 @@
 #close-pop-up:active{
     background-color: var(--accent-color);
     color:white;
+}
+
+/* place a popup overlay overtop top of page content */
+#end-game-pop-up {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index: -1;
+    background-color: var(--hover-color);
+    font-size:.85em;
+}
+
+#end-game-pop-up div{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    max-width:100%;
+    min-width:300px;
+    padding:40px;
+    border-radius:10px;
+    background-color: var(--main-background-color);
 }
