@@ -19,19 +19,39 @@
 <main>
     <header>
         <h1 class="title">Philippe Blais - A01198257</h1>
-        <h2 class="subtitle">COMP - 2132 : Assignment 8</h2>
+        <h2 class="subtitle">COMP - 2132 : Final Assignment</h2>
     </header>
     <div id="content-wrap">
-        <div class="homework-grid">
-            <h3 id="product-title">Bike Product: LTD Race</h3>
+        <div id="game-start">
+            <h3>Slice and Dice Game</h3>
+            <div id="dice-animation" class="box">
+                <p>Compete against the smartest dice rolling computer in the world!</p>
+                <img src="images/dice-6.svg" alt="dice with red dot">
+                <img src="images/dice-5.svg" alt="dice with red dot">
+                <img src="images/dice-4.svg" alt="dice with red dot">
+                <img src="images/dice-3.svg" alt="dice with red dot">
+                <img src="images/dice-2.svg" alt="dice with red dot">
+                <img src="images/dice-1.svg" alt="dice with red dot">
+                <button id="btn-start-animation">Start Game</button>
+            </div>
+        </div>
+        <div id="game-grid">
+            <h3>Slice and Dice Game</h3>
             <div class="box">
-                <img id="bike" src="images/bike-1.jpg" alt="main product">
-                <div>
-                    <button id="btn-start-animation">Start</button>
-                    <button id="btn-stop-animation">Stop</button>
+                <div class="game-box">
+                    <div class="sub-box">
+                        <div><p>item 1</p></div>
+                        <div><p>item 2</p></div>
+                    </div>
+                    <div class="sub-box">
+                        <div><p>item 3</p></div>
+                        <div><p>item 4</p></div>
+                    </div>
+                </div>
+                <div class="btn-layout">
+                    <button id="btn-end-animation">End Game</button>
                 </div>
             </div>
-
         </div>
     </div>
 </main>
