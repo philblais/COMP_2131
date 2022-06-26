@@ -1,4 +1,10 @@
 // constants
+const playerTitle = document.getElementById('player-title');
+const playerName = document.getElementById('player-name');
+const player2Title = document.getElementById('player-2-title');
+const player2Name = document.getElementById('player-2-name');
+const warningMsg = document.getElementById('warning-msg');
+const winnerMsg = document.getElementById('winner');
 const gameStartView = document.getElementById('game-start');
 const gameGridView = document.getElementById('game-grid');
 const popup = document.getElementById('pop-up');
@@ -13,16 +19,28 @@ const btnNewGamePopUp = document.getElementById('new-game-pop-up-btn');
 const btnDismissEndGamePopUp = document.getElementById('dismiss-end-game-pop-up');
 const yourDice1 = document.getElementById('your-dice-1');
 const yourDice2 = document.getElementById('your-dice-2');
-const compDice1 = document.getElementById('comp-dice-1');
-const compDice2 = document.getElementById('comp-dice-2');
+const player2Dice1 = document.getElementById('player-2-dice-1');
+const player2Dice2 = document.getElementById('player-2-dice-2');
 const yourScore = document.getElementById('your-score');
-const computerScore = document.getElementById('computer-score');
+const player2Score = document.getElementById('player-2-score');
 const yourTotalScore = document.getElementById('your-total-score');
-const compTotalScore = document.getElementById('comp-total-score');
+const player2TotalScore = document.getElementById('player-2-total-score');
+const timeDelay = 2000
+let roll1 = 0;
+let roll2 = 0;
+let roll3 = 0;
+let roll4 = 0;
 
-let yourCurrentScore = 0
-let compCurrentScore = 0
-let round = 0
+
+const player = new Player(`Phil`, 0);
+const player2 = new Player(`Computer`, 0);
+let game = new Game(player, player2, 0);
+
+playerTitle.innerHTML = `${player.name}`
+playerName.innerHTML = `${player.name}`
+player2Title.innerHTML = `${player2.name}`
+player2Name.innerHTML = `${player2.name}`
+
 let rollDiceEnabled = true
 
 // listeners
@@ -34,106 +52,36 @@ btnStartAnimation.addEventListener('click', function () {
 btnEndGame.addEventListener('click', function () {
     gameStartView.style.setProperty("display", "grid")
     gameGridView.style.setProperty("display", "none")
-    resetGame()
+    resetGame(game)
 });
 
 btnNewGame.addEventListener('click', function () {
-    resetGame()
+    resetGame(game)
 });
 
 btnRollDice.addEventListener('click', function () {
     if (rollDiceEnabled) {
-        let roll1 = Math.floor(Math.random() * 6)+1;
-        let roll2 =  Math.floor(Math.random() * 6)+1;
-        let roll3 = Math.floor(Math.random() * 6)+1;
-        let roll4 =  Math.floor(Math.random() * 6)+1;
-
-        yourDice1.src = `images/dice-${roll1}.svg`
-        yourDice2.src = `images/dice-${roll2}.svg`
-        compDice1.src = `images/dice-${roll3}.svg`
-        compDice2.src = `images/dice-${roll4}.svg`
-
-        let yourRound = roll1 + roll2
-        let compRound = roll3 + roll4
-
-        if (roll1 === roll2) {
-            yourRound *=2
-        }
-
-        if (roll1 === 1 || roll2 === 1 ) {
-            yourRound = 0
-        }
-
-        if (roll3 === roll4) {
-            compRound *=2
-        }
-
-        if (roll3 === 1 || roll4 === 1 ) {
-            compRound = 0
-        }
-
-        yourCurrentScore += yourRound
-        compCurrentScore += compRound
-        yourScore.innerHTML = `${yourRound}`
-        computerScore.innerHTML = `${compRound}`
-        yourTotalScore.innerHTML = `${yourCurrentScore}`
-        compTotalScore.innerHTML = `${compCurrentScore}`
-
-        round++
-        if (round === 3) {
-            endGame()
-        }
+        rollDice()
+    } else {
+        showWarning()
     }
 });
 
 btnGameRules.addEventListener('click', function () {
-    popup.classList.remove("hidden");
-    popup.classList.add("visible");
-    popup.style.setProperty('z-index', '1')
+    showPopUp(popup)
 });
 
 btnClose.addEventListener('click', function () {
     closePopUp()
 });
 
-
 btnNewGamePopUp.addEventListener('click', function () {
-    resetGame()
-    endGamePopup.classList.remove("visible");
-    endGamePopup.classList.add("hidden");
-    endGamePopup.style.setProperty('z-index', '-1')
+    resetGame(game)
+    dismissPopUp(endGamePopup)
 });
 
 btnDismissEndGamePopUp.addEventListener('click', function () {
     rollDiceEnabled = false
-    endGamePopup.classList.remove("visible");
-    endGamePopup.classList.add("hidden");
-    endGamePopup.style.setProperty('z-index', '-1')
+    dismissPopUp(endGamePopup)
 });
 
-function resetGame(){
-    round = 0
-    rollDiceEnabled = true
-    yourDice1.src = "images/dice-6.svg"
-    yourDice2.src = "images/dice-6.svg"
-    compDice1.src = "images/dice-6.svg"
-    compDice2.src = "images/dice-6.svg"
-    yourCurrentScore = 0
-    compCurrentScore = 0
-    yourScore.innerHTML = `0`
-    computerScore.innerHTML = `0`
-    yourTotalScore.innerHTML = `0`
-    compTotalScore.innerHTML = `0`
-}
-
-function closePopUp() {
-    popup.classList.remove("visible");
-    popup.classList.add("hidden");
-    popup.style.setProperty('z-index', '-1');
-}
-
-function endGame() {
-    endGamePopup.classList.remove("hidden");
-    endGamePopup.classList.add("visible");
-    endGamePopup.style.setProperty('z-index', '1')
-}

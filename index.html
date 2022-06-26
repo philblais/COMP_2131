@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles-modal.css">
+    <script src="scripts/functions.js" defer></script>
+    <script src="scripts/animations.js" defer></script>
+    <script src="scripts/classes.js" defer></script>
     <script src="scripts/final-assignment.js" defer></script>
 </head>
 <body>
@@ -25,14 +28,16 @@
         <div id="game-start">
             <h3>Slice and Dice Game</h3>
             <div id="dice-animation" class="box">
-                <p>Compete against the smartest dice rolling computer in the world!</p>
+                <h4 class="intro-text">Compete against the smartest dice rolling computer in the world!</h4>
                 <img src="images/dice-6.svg" alt="dice with red dot">
                 <img src="images/dice-5.svg" alt="dice with red dot">
                 <img src="images/dice-4.svg" alt="dice with red dot">
                 <img src="images/dice-3.svg" alt="dice with red dot">
                 <img src="images/dice-2.svg" alt="dice with red dot">
                 <img src="images/dice-1.svg" alt="dice with red dot">
-                <button id="btn-start-animation">Start Game</button>
+                <div class="start-btn-layout">
+                    <button id="btn-start-animation">Start Game</button>
+                </div>
             </div>
         </div>
         <div id="game-grid">
@@ -41,38 +46,41 @@
                 <button id="game-rules">Rules</button>
                 <div class="game-box">
                     <div class="sub-box">
-                        <h4>You</h4>
+                        <h4 id="player-title">You</h4>
                         <p>Dice rolls</p>
                         <img id="your-dice-1" src="images/dice-6.svg" alt="dice with red dot">
                         <img id="your-dice-2" src="images/dice-6.svg" alt="dice with red dot">
                     </div>
                     <div class="sub-box">
-                        <h4>Computer</h4>
+                        <h4 id="player-2-title">Computer</h4>
                         <p>Dice rolls</p>
-                        <img id="comp-dice-1" src="images/dice-6.svg" alt="dice with red dot">
-                        <img id="comp-dice-2" src="images/dice-6.svg" alt="dice with red dot">
+                        <img id="player-2-dice-1" src="images/dice-6.svg" alt="dice with red dot">
+                        <img id="player-2-dice-2" src="images/dice-6.svg" alt="dice with red dot">
                     </div>
                 </div>
                 <div class="game-box">
                     <div class="sub-box">
-                        <h4>Your Score</h4>
+                        <h4><span id="player-name"></span>'s Score</h4>
                         <p>Score this round:</p>
                         <p id="your-score">0</p>
                         <p>Total Score:</p>
                         <p id="your-total-score">0</p>
                     </div>
                     <div class="sub-box">
-                        <h4>Computer's Score</h4>
+                        <h4><span id="player-2-name"></span>'s Score</h4>
                         <p>Score this round:</p>
-                        <p id="computer-score">0</p>
+                        <p id="player-2-score">0</p>
                         <p>Total Score:</p>
-                        <p id="comp-total-score">0</p>
+                        <p id="player-2-total-score">0</p>
                     </div>
                 </div>
                 <div class="btn-layout">
                     <button id="btn-new-game">New Game</button>
                     <button id="btn-roll-dice">Roll Dice</button>
                     <button id="btn-end-game">End Game</button>
+                </div>
+                <div class="msg-layout">
+                    <p id="warning-msg" class="alert-red">You need to start a new game to roll.</p>
                 </div>
             </div>
         </div>
@@ -102,6 +110,7 @@
 <section id="end-game-pop-up" class="hidden">
     <div>
         <h4>Game has ended</h4>
+        <p id="winner"></p>
         <button id="new-game-pop-up-btn">New Game</button>
         <button id="dismiss-end-game-pop-up">Dismiss</button>
     </div>

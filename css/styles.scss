@@ -151,6 +151,10 @@ nav ul li a:hover {
   column-gap: 8px;
 }
 
+#warning-msg {
+  display: none;
+}
+
 .box {
   background: $boxColor;
   padding: 30px;
@@ -203,16 +207,6 @@ nav ul li a:hover {
   font-size: larger;
 }
 
-.alert-red-field {
-  border-radius: 6px;
-  color: #FFFFFF;
-  padding: 2px;
-  margin: 0;
-  font-weight: bold;
-  border: solid 2px $alertBorderColor;
-  background: $alertBgColor;
-}
-
 .alert-red {
   border-radius: 6px;
   color: #FFFFFF;
@@ -226,6 +220,16 @@ nav ul li a:hover {
 .separator {
   display: block;
   border-bottom: 2px solid $textColor;
+}
+
+.intro-text {
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-bottom: 30px;
+}
+
+.start-btn-layout {
+  margin-top: 30px;
 }
 
 label {
